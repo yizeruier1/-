@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>五子棋</title>
+	<style>
+		body,canvas{margin:0;padding:0;}
+		#chess{display:block;margin:20px auto;box-shadow:6px 6px 20px gray,-2px -2px 4px gray;}
+	</style>
+</head>
+<body>
+	<canvas id="chess" width=450 height=450></canvas>
+</body>
+
+<script>
+window.onload = function(){
+	var chess = document.getElementById('chess');
+	var context = chess.getContext('2d');
+	var chessArr = [];    //存储棋子的二维数组   1为白旗  2为黑旗
+	var flag = true;      //下黑旗  还是白旗   true白旗    false黑旗
+	var allWins = [];      //赢法数组     保存棋盘中所有的赢法
+	var count = 0;         //纪录赢法数量
+	var whiteWin = [];     //白旗赢法统计
+	var blackWin = [];     //黑旗赢法统计
+	var gameOver = false;
+
+
+
+	var arcarr = [
+		{x:225,y:225},
+		{x:165,y:165},
+		{x:285,y:285},
+		{x:285,y:165},
+		{x:165,y:285},
+	];
+
+	for(var i = 0; i < 15; i++){     //初始化数组   全部为零
+		chessArr[i] = [];
+		allWins[i] = [];
+		for(var j = 0; j < 15; j++){
+			chessArr[i][j] = 0;
+			allWins[i][j] = [];
+		}
+	}
+
+	//记录竖着  赢法
+	for(var i=0; i<15; i++){
+		for(var j=0; j<11; j++){
+			for(var k=0; k<5; k++){
+				allWins[i][j+k][count] = true;
+			}
+			count++;
+		}
+	}
+	//记录横着  赢法
+	for(var i=0; i<15; i++){
+		for(var j=0; j<11; j++){
+			for(var k=0; k<5; k++){
+				allWins[j+k][i][count] = true;
+			}
+			count++;
+		}
+	}
+	//记录斜线  赢法
+	for(var i=0; i<11; i++){
+		for(var j=0; j<11; j++){
+			for(var k=0; k<5; k++){
+				allWins[i+k][j+k][count] = true;
+			}
+			count++;
+		}
+	}
+	//记录反斜线  赢法
+	for(var i=4; i<15; i++){
+		for(var j=0; j<11; j++){
+			for(var k=0; k<5; k++){
+				allWins[i-k][j+k][count] = true;
+			}
+			count++;
+		}
+	}
+
+	for(var i = 0; i < count; i++){
+		whiteWin[i] = 0;
+		blackWin[i] = 0;
+	}
+
+
+	// 棋盘的背景图片
+	var logo = new Image();
+	logo.src = 'images/1.png';
+	logo.onload = function(){
+		context.drawImage(logo, 20, 20, 420, 420);
+		drawBroad();
+		drawArc();
+	}
+	context.strokeStyle = 'gray';
+	//画棋盘的线
+	var drawBroad = function(){
+		for(var i = 0; i < 15; i++){
+			context.moveTo(15 + i * 30,15);
+			context.lineTo(15 + i * 30,435);
+			context.stroke();
+			context.moveTo(15,15 + i * 30);
+			context.lineTo(435,15 + i * 30);
+			context.stroke();
+		}
+	}
+	//画5个点
+	var drawArc = function(){
+		for(var i = 0; i < arcarr.length; i++){
+			context.beginPath();
+			context.arc(arcarr[i].x,arcarr[i].y,4,0,2*Math.PI,false);
+			context.closePath();
+			context.fillStyle = 'gray';
+			context.fill();
+		}
+	}
+	//  画棋子
+	var drawqizi = function(i, j, type){
+		context.beginPath();
+		context.arc(15 + i * 30,15 + j * 30,10,0,2*Math.PI);
+		context.closePath();
+		var gradient = context.createRadialGradient(12 + i * 30,12 + j * 30,6,12 + i * 30,12 + j * 30,1);
+		if(type){   //   type = true    下白旗
+			gradient.addColorStop(0,'#D1D1D1');
+			gradient.addColorStop(1,'#F9F9F9');
+		}else{     //   type = true    下黑旗
+			gradient.addColorStop(0,'#000');
+			gradient.addColorStop(1,'gray');
+		}
+		
+		context.fillStyle = gradient;
+		context.fill();
+	}
+
+	
+
+	//棋盘点击  下棋
+	chess.onclick = function(e){
+		if(gameOver){
+			return
+		}
+		var x = e.offsetX;
+		var y = e.offsetY;
+		var i = Math.floor(x/30);
+		var j = Math.floor(y/30);
+		if(chessArr[i][j] == 0){
+			drawqizi(i, j, flag);
+		}else{
+			return
+		}
+
+		if(flag){
+			chessArr[i][j] = 1;
+		}else{
+			chessArr[i][j] = 2;
+		}
+		for(var z = 0; z < count; z++){
+			if(allWins[i][j][z]){
+				if(flag){
+					whiteWin[z]++;
+					if(whiteWin[z] >= 5){
+						alert('白旗赢了！');
+						gameOver = true;
+						return
+					}
+				}else{
+					blackWin[z]++;
+					if(blackWin[z] >= 5){
+						alert('黑旗赢了！');
+						gameOver = true;
+						return
+					}
+				}
+			}
+		}
+		flag = !flag;
+
+	}
+
+
+
+
+}
+	
+</script>
+
+</html>
