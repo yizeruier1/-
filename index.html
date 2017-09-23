@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>贪吃蛇</title>
+	<style>
+		::selection {
+			color:#FFFFFF;
+			background:transparent;
+		}
+		::-moz-selection {
+			color:#FFFFFF;
+			background:transparent;
+		}
+		*{margin:0;padding:0;}
+		body{background-color:#000;}
+		canvas{border:2px solid #fff;display:block;margin:0 auto;}
+		.box{width:300px;height:200px;margin:0 auto;}
+		.box p{width:100%;height:80px;line-height:80px;font-size:30px;color:#fff;text-align:center;}
+		.box .newgame{width:200px;height:50px;line-height:50px;text-align:center;cursor:pointer;
+			font-size:24px;color:#fff;margin:20px auto;}
+
+		.gameover{width:600px;height:300px;line-height:300px;text-align:center;color:#fff;font-size:70px;
+			position:fixed;top:50%;left:50%;margin-left:-300px;margin-top:-150px;border:2px solid #fff;
+			display:none;}
+		.start{width:600px;height:40px;line-height:40px;text-align:center;color:#fff;font-size:18px;
+			position:fixed;top:50%;left:50%;margin-left:-300px;margin-top:100px;display:none;}
+
+		.tip{width:200px;height:80px;font-size:28px;color:#fff;text-align:center;line-height:80px;
+			margin:0 auto;}
+
+	</style>
+</head>
+<body>
+	<div class="box" id="info">
+		<p id="score">分数：</p>
+		<div class="newgame" id="newGame">New Game</div>
+	</div>
+	<canvas id="screen" width="302" height="302"></canvas>
+	<div class="tip" id="tip"></div>
+	<div class="gameover" id="gameOver"> Game Over ! !</div>
+	<div class="start" id="reStart">click here to try again</div>
+
+	
+</body>
+<script src="index.js"></script>
+</html>
