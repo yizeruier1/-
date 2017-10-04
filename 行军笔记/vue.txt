@@ -1,0 +1,90 @@
+将vue项目npm run build出来后的www文件放到cordova的目录结构中，用cordova打包
+
+豆瓣电影接口
+http://api.douban.com/v2/movie/top250?start=25&count=25
+
+
+
+cnpm install -g vue-cli
+
+vue init webpack pro-name     初始化开始一个项目
+
+cnpm install         安装package.json所需要的依赖
+
+cnpm run dev        启动项目
+
+
+标签绑定  HTML   元素的方法  :   
+
+	<p v-text='a'></p>
+        <p v-html='a'></p>     只有这个可以解析html标签
+        <p>{{ a }}</p>
+
+
+<li v-for="a in arr">    循环输出  arr 数组中的数据
+
+
+<h1 v-if="isShow">{{ msg }}</h1>
+<h1 v-show="isShow">{{ msg }}</h1>      控制标签显示或者隐藏
+
+
+绑定事件  两种方法  
+	<p v-on:click="clickFun">{{ a }}</p>
+    <p @click="clickFun">{{ a }}</p>     简写 方法
+
+
+
+<p v-bind:class="{ big : isBig}"></p>   给元素添加类   并控制
+
+
+获取input标签的内容  
+	<input type="text" ref='input' />        alert(this.$refs.input.value)
+	<input type="text" v-model="input2">        this.input2
+	v-model  只能在  input  没有默认值的时候使用
+
+
+
+
+
+this.lis.splice(num,1)    删除lis数组的第num个元素
+
+
+VUE 注册组件 components : { colorA }    调用时   <color-a></color-a>
+	!!!	驼峰命名的组件名字要用  -  来写
+
+
+
+组件通信：   父元素向子元素传递  数据 ：
+<p color="red"></p>    子元素  props:['color']  来接收
+	子元素向父元素传递  数据 ：
+<hello v-on:childtofather="listenChild"></hello>
+子元素  this.$emit('childtofather', '我吃过饭了');   （监听的事件名，要传送的数据）
+
+
+把一个 字符串 反过来   message.split('').reverse().join('')
+
+
+
+
+用axios从接口拿数据  
+mounted() {
+    axios.get("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=your_api_key")
+    .then(response => {this.results = response.data.results})
+  }
+
+正在热映豆瓣接口：
+
+https://api.douban.com/v2/movie/in_theaters
+
+
+即将上映豆瓣接口
+
+https://api.douban.com/v2/movie/coming_soon
+
+
+
+
+
+
+
+

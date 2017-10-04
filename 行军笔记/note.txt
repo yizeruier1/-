@@ -1,0 +1,513 @@
+	移动端字体:font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif; 
+———————————————————————第一周————————————————————   563811248    企鹅直播：10000946
+
+	www.52pojie.cn	
+
+
+  --css属性：
+     
+
+ 一 overflow 属性  规定当内容溢出元素框（例 div）时  所触发的属性。
+            属性值：hidden： 后面东西会被剪裁，隐藏，不显示。
+            scroll：放到框里，有滚动条。
+
+
+ 二 css文字处理：字体类型：font-family：字体类型;（字体类型可以写多个，默认使用第一个类型，没有第一个则使用第二个）
+		     字体大小：font-size:npx; (n为一数值，浏览器默认大小为16像素)
+                     字体颜色：color:red    颜色值表示方法：1color：red  2十六进制 ：color：#FF0000  3RGB ：color：rgb（255,255,255）
+		     字体样式：font-weight:bold 粗体 bolder 更粗的
+		               font-style:italic 斜体
+				   font-style:normal 正常
+				   
+				   text-decoration:underline; 下划线
+				   text-decoration:overline; 上划线
+				   text-decoration:line-through; 删除线(中划线)
+				   text-decoration:none;  没有线
+
+ 三 div :  用于划分各个块，    container:主容器
+    语法<div>内容</div>
+    例:<div class = "container">内容</div>
+  
+  
+  .container{width:542px;margin:0 auto;} 
+   margin-left左边距   margin-right右边距   margin-top上边距 margin-bottom下边距 
+   margin:0 auto   上下为0，   左右自动。
+
+  四  HTML5——常用标签：  
+    
+    标题标签:<h1> - <h6>
+    段落标签：<p> </p>
+    图片标签：<img src = "图片相对路径"   alt"错误提示文字 或 加载中提示文字">
+    img 标签 默认有下边距   display：block  可以删除下边距
+
+    文字标签：<i></i> 字体倾斜   <strong>文字加粗   <sup>上标   <sub>下标
+
+    
+    超链接标签:<a href="链接">点击要跳转的文字</a>
+    例:<a href="http://www.baidu.com">百度</a>
+    属性：target="_blank"   在另一个页面中打开超链接
+    例:<a href="http://www.baidu.com" target="_blank">百度</a>
+
+
+    css背景图片标签：    background-image:url(images/btn.png);
+			background-repeat:背景图片重复类型   no-repeat;不重复
+			background-position:  背景定位
+
+    
+    外链样式：<link href = "css/a.css（css文件相对路径）" type = "text/css" 
+     rel = "stylesheet">   把想用的样式写到一个css文件里，用这个标签调用
+
+    <span></span> : 用于标记一些没有什么意思的文本。
+  
+   
+  五-css类调用、定义 
+     css全称层叠样式表： 用于给页面html标签进行美化，例如 添加颜色、定义大小、
+     给页面主题添加背景颜色、
+    1、 行内样式：直接写在标签上的样式，  用style = "里面写样式" 
+    2、 页面样式：放在head中间的
+    <style type = "text/css" rel = "stylesheet">
+      这里写想用的 样式例:#zhangsan{font-size:60px;color:blue;}
+      					p{background-color:red;font-size:24px;}
+                        .a{background-color:red;}
+    </style>
+    
+————类选择器/class 类的命名规范：不能以数字开头、不能有特殊符号、不能与关键字重名、区分大小写、用全英文写、
+             定义样式  例：.a{background-color:red;}
+             设置所有页面中的p标签的样式  p{background-color:red;font-size:24px;}
+             
+             id 选择器：唯一的，一个页面中只允许出现一次相同的名字
+		id命名规则：区分大小写、必须以字母开头、
+             #zhangsan{font-size:60px;color:blue;}
+  
+   包含选择器：  例  .a span{  }  父级元素a下的所有span标签都是这个样式 p下的子元素、孙元素都可以。
+
+  分组选择器：  html，body，p{  内容  }用来写拥有同样内容的类
+  子选择器  ：  .box>p{}   父级元素box下的子元素p  二者只能是父子关系，
+
+  相邻选择器：  .box+div{}     与box相邻的下面一个div类的   属性、 
+    
+     外链样式：<link href = "css/a.css（css文件相对路径）" type = "text/css" 
+     rel = "stylesheet">   把想用的样式写到一个css文件里，用这个标签调用                    
+    
+  六-常用图片格式：
+    jpg  画质一般，常用
+    png  画质较好，但是较大，一般为png24 可以实现半透明/透明                                   
+    gif  
+
+  七- 从网页中的图片中切图 ps操作：  裁剪--切片工具--右键
+
+
+
+
+———————————————————————第二周————————————————————
+
+
+
+
+网站首页：index.html
+
+
+————————css层叠性：相同的属性，后面的会覆盖前面的
+		一个html元素可以加多个类，用空格隔开  例<p class="title name first"></p>
+
+
+1  text-align：center    对图片也居中。
+2  display：blcok；（块级元素）     以块状显示  
+      <p>如果不设置宽高，默认占父级元素的一行
+      如果不设置高度。   高度会随内容变动。
+   display：inline；（行内元素/内联元素）    多个行内元素会排成一行   没有width和height
+3  img-box   宽度等于父元素的宽度。
+4  包含选择器：  例  .a span{  }  父级元素a下的所有span标签都是这个样式 p下的子元素、孙元素都可以。
+		.box1 p,.box1 h2  双层包含   .box1下的两个元素同用一个样式	
+			
+5  分组选择器：  html，body，p{  内容  }用来写拥有同样内容的类
+6  子选择器  ：  .box>p{}   父级元素box下的子元素p  二者只能是父子关系，.box>.title
+7  相邻选择器：  .box+div{}     与box相邻的下面一个div类的   属性
+
+   8   选择器优先级：  ID>类>标签
+
+一、段落样式：
+
+   1  文字缩进/首行缩进：text-indent:n px;    
+   2  行高：line-height：n px;
+      
+        行高的高级应用（只适用于单行文本）：   做成一个按钮
+        按钮内的文字上下左右居中           上下居中：行高=块的高度
+ 
+   3  字间距：letter-spacing:n px;
+   4  伪类（通常用在a标签上）三.a:hover{ background-color:#333;}鼠标指到按钮上时改变按钮状态
+		二.a:visited:  访问过的样式 四 .a:active:点下去的样式
+		一.a:link  默认样式   顺序不能错
+  
+
+
+    5   每个html元素都一个display属性且有一个默认的display默认值
+       display-none  隐藏元素
+
+
+   6   盒子模型  宽度width  高度height  外边距margin   内边距padding   边框border
+        border：边框大小  边框类型  边框颜色；
+        四个方向的顺序    顺时针顺序    上右下左   
+        特殊情况：padding：20px 30px；上下20左右30；
+
+
+   7    有些快状元素margin和padding都有默认值  如：p  和 body  html  和 h1等
+        所以  一般在开发中，会把默认的某些样式去掉，
+
+
+88888、   css背景图片   background-image:url(images/btn.png);
+			background-repeat:背景图片重复类型   no-repeat;不重复
+			background-position:  背景定位
+
+
+———————————————————————第三周————————————————————
+css   禁用大写
+文档流：   块级元素从上往下排列，每块独占一行。
+
+
+
+   相对路径：返回上一级文件夹命令：   ../
+
+   无序列表：   <ul>  <li></li>  </ul>
+   有序列表：   <ol>  <li></li>  </ol>
+   自定义列表：   <dl>  <dt></dt><dd></dd><dd></dd>  </dl>
+                dt:标题  dd:列表项，
+    list-style：    列表项样式   属性值none：清除列表项样式
+
+横向导航：用ul  初始化   用浮动 float 变成一行，
+    块内元素浮动会引起父元素高度变化为零，overflow：hidden   可以解决这个问题
+
+
+—————————————————————第四周————————————————————
+
+sublime-text快捷键:
+
+     ctrl+d    搜索多个相同的字 
+     ctrl+shift+p    文件的打开方式    以html等方式编辑   txt等   文件
+    -- 输入html  按tab  自动生成标签   需加上  <meta charset="UTF-8">
+       输入标签.类名     ctrl + e  生成带类名的标签
+      a*10    ctrl + e  ： 快速生成十个a标签
+
+
+
+     ctrl+回车  自动换行   切换到下一行
+     打开上个关闭的文件  或浏览器中的页面   ctrl + shift + t
+     在已经打开的文件之间  切换  ctrl + tab (浏览器也是)
+
+
+表格：  caption : 标题   宽度是以表格内容   格的宽度和决定的
+        border-collapse: collapse;   去掉表格边框
+        <table cellpadding="20px"> 表格内容与所在格的边界的距离、、单位默认是px  不用写
+        <table cellspacing="20px"> 表格里格与格之间的上下左右之间的距离，、、也是px
+         colspan="数字"  合并行单元格  数字为要合并的单元格数
+         rowspan="数字"  合并列单元格  数字为要合并的单元格数
+   
+        <th></th>标签   一格  <tr></tr> 一行    <td></td>   一列
+         th与td的区别：th字体是加粗的一般用于表格的第一行  即  表头。td一般用于写内容
+             th字体默认是加粗上下左右居中的   而td是上下居中，左右居左，       
+
+——————table表格决定了整个表格的“宽度”！
+           table列默认平分table的宽度
+            table表格的宽度在没有固定宽度的情况下，它的宽度是默认转换为百分比的，
+            同一列中，宽度以最宽的一列为准
+            同一行中，高度以最高的一行为准
+           给table添加样式的时候，主要是给table，th，td添加样式，尽量不给tr加样式，容易出错
+   
+
+浮动：两个兄弟块元素--浮动元素会盖在未浮动元素上面，但是未浮动元素上的文字会在浮动元素的下面
+      两个兄弟元素--块级元素浮动 后面 接一个不浮动的行内元素，行内元素会跟在块级元素后面
+
+      浮动对自身的影响：元素浮动以后会变成块级元素    等同于自动display：block；
+清除浮动：      clear：left  right  both  去除浮动元素对父元素和兄弟元素的影响
+                写在不浮动的元素上   去掉其他浮动元素对他的影响
+
+      overflow去除对父元素的 高度的影响
+      
+      伪元素：用css生成一个html标签，例如在div前面加一个元素   伪元素是行内元素
+      div（或者div上的类名）：before{content：‘这里是内容’} 后面加一个元素 div：after{}      
+      使用after清除浮动：加在父元素上，先转化成块级元素  然后clear：both
+ 
+
+
+—————————————————————第五周————————————————————
+
+
+————定位position  ：  默认值static  不定位
+     一、精准定位
+
+          1 精准定位，可以精准定位到  参考原点  的任意位置
+          2 可以设置层级   实现多个html元素   重叠
+          3 如果使用了  left和top（成对出现）  right和bottom  会失效  反之也是
+                          原点为左上角         原点为右下角
+     二、 分类
+               
+          1 相对定位  relative：以自身元素的  左上角为  坐标原点，进行位置的偏移，
+            有上下左右  四个偏移方向  写法，例：position：relative；left：200px；可以有负值
+    
+           ----元素使用相对定位以后，仍然会占用原来的位置
+
+          2 绝对定位  absolute： 
+             1 以最近的定位（加position的元素）父元素 或者祖先元素的左上角为坐标原点  
+                    如果都没有  ，  以body左上角为原点  
+             2 绝对定位会脱离文档流，浮在文档流的上层，可实现重叠 
+    
+             3 z轴 面向自己的轴  用来调整页面层级， 层级越高 覆盖性越强  写法：z-index：2；
+
+
+          3 固定定位  fixed   脱离文档流  固定在某一位置  原点坐标以body 左上或右下为准
+
+          4  css 透明度 ： opacity ：0.5；  /*50%的透明度*/
+                           取值为0-1    1： 不透明 /  0： 透明
+             注：  用于html元素，是css属性；  
+             父元素设置了opacity，，里面的子元素也会继承或者受到影响，子元素透明度也会变化
+
+
+          5  元素隐藏：  opacity：0；  元素透明度为零，隐藏，不可见 没有消失 占有位置
+                       display：hidden； 元素隐藏 消失 
+
+————————表单：  form     disabled:设置表单值为只读  不可修改
+      
+             传输方式：method：    1 get：通过浏览器地址栏传输数据，
+                                   2 post：  加密传输， 更安全
+
+               action：  存储或请求的动态页面地址  
+          选择性表单属性:checked---默认选中值
+
+——————input  语法  ：  type-决定表单组件是什么类型  
+                             
+                                   text  ：文本框
+                                   password  ：  密码框
+                                   submit  ：  提交按钮
+                                   radio : 单选框  value相当于其他部件的name 
+                 用户后台接收数据调用,多个单选框一起用  把名字属性(name)写一样就可以
+                                   checkbox : 用于多项选择,可以单个使用
+                                   
+                                   
+   ----<textarea : 文本域  cols=""; rows="";设置内容大小></textarea>  不用type
+
+   ----<label 标签 for属性   for="表单组件的ID名字"  在页面上点击label的时候  光标自动选中该部件
+   ----<select  name=""  id=""   下拉列表框  >
+	
+           <option value=""></option>
+
+       </select>  value也是用于提交后台   selected  默认选中的项
+
+________文本框 提示  文字属性 :  placeholder:文本框默认文本,输入时,文本自动消失
+
+
+
+—————————————————————第六周————————————————————
+
+
+------H5/css3:圆角:  border-radius:像素;
+
+              动画:  transition:all linear 0.5s;
+
+
+------Web 应用技术结构  :  界面/UI(user interface) :  html & html5  css & css3
+
+			   UI交互 : 动态网页 响应操作,JavaScript & jQuery
+
+			   数据存储 : 数据库 MySQL sql server monogoDB
+
+			   业务逻辑 : 处理用户的各种操作   php/java/nodeJS(可以在服务器端运行)/
+
+
+-------  psd设计稿尺寸 : (兼容大多数大屏幕)  1920px*1080px
+         主体内容尺寸 : (兼容最小屏幕)  width:1000px  或  980px  或  960px;
+
+-------css2用边框实现   三角形: 宽高设置为li  0 ,  用边框厚度实现三角,其他三个边框颜色为透明
+        例子:   border-top:10px solid red;   width:0;  height:0;
+                border-right:10px solid transparent;
+                border-bottom:10px solid transparent;
+                border-left:10px solid transparent;  此为一个10px  倒立红色三角
+         transparent :  可以做为颜色的属性值,  为透明颜色,可以兼容父元素的背景色.
+
+
+
+—————————————————————第7周————————————————————-----
+
+!important  提升级别  最高级别
+----css 3 :   IE8  及以下版本浏览器对css3支持度不太好
+              移动端 浏览器 支持度很好, 一般css3的技术,都可以用在移动端 
+
+
+         1  新增强大的选择器  :  通用兄弟选择器  选择调用该类的元素后面所有兄弟元素的样式
+                                 语法:    .class~a{}   IE6  不支持该选择器
+
+         2  属性选择器  :  E[attr="value"]{}   ^ 以什么开头  $ 以什么结尾  ~等于   *只要属性值中包含这个字符串(value)就匹配
+                          例 : a[href="www.baidu.com"]{}  选择href属性值为百度的a标签
+
+
+         3  伪类选择器  :  :focus  获得焦点事件    :disabled 选择被加了disabled的元素
+
+           a :nth-child(n){};   父元素a下第n+1个子元素的样式  n=0 没有选择元素/
+           a :nth-child(length){};   父元素a下 几个子元素的样式  
+
+           a :nth-child(2n){};   父元素a下偶数子元素的样式    从0开始计算
+           a :nth-child(2n+1){};   父元素a下奇数子元素的样式
+
+           a :last-child(){};   父元素a下最后一个子元素的样式
+           a :first-child(){};   父元素a下第一个子元素的样式
+
+           a :nth-last-child(n){};   选中父元素a下的n个元素,从最后一个子元素开始数
+
+           a :nth-child(-n+length){};   父元素a下 选择length之前的子元素的样式  包括第length个
+           a :nth-child(n+length){};   父元素a下 选择length之后的子元素的样式  包括第length个
+
+           a :nth-chil(n*length+1){}   隔length个   选择1个
+
+
+	   p:empty:空标签选择器     
+
+           not选择器:   input:not([type="text"]){}   除了text外 所有input元素的样式
+                                  [type="text"]  换成  选择器也行  例:   .class''
+
+          4 颜色{rgba(255,255,255,0.5);filter:alpha(opacity=50);}兼容低版本的IE  颜色透明度
+             
+	  5 text-shadow:X轴便宜 Y轴便宜 模糊半径 颜色(可以是rgba);
+              XY轴为0时 阴影从所有方向出现  XY轴可以设置负值
+
+---------------字体 font-face  :  电脑上没有css中的字体   会用电脑上的默认字体显示
+    ttf  woff  svg   eot   字体文件格式
+
+            font-face  字体图标:使用字体文件,和css实现某些特殊字体和图标
+
+            1 定义字体 2 定义类 3 调用类  实现图标
+
+
+
+
+--------------优化图片  网站:  tinypng.com    腾讯智图
+
+
+
+--------------文本超出div宽度自动换行处理:text-overflow:ellipsis;文本超出后使用省略号
+                       overflow:hidden;必须加上  white-space:nowrap;禁止换行
+
+             文本大小写转换: text-transform:lowercase;大转小写uppercase相反
+
+              自动换行    word-wrap:break-word;
+
+
+         
+—————————————————————第8周————————————————————-----
+
+
+
+---------css 单位:em    经常用于字号设置  2em表示该元素的字体大小和宽高为父元素的字体大小2倍
+
+           --rem=root+em  css3新增  移动端会经常用 以HTML标签的字体大小为准 百分比计算
+
+
+-------box-shadow : inset内阴影 X轴 Y轴 模糊半径 扩展半径 阴影颜色
+
+css3  圆角:border-top-left-radius  左上角  
+
+实现一个圆  :  宽度和高度相等:border-radius:50%;  
+     可以缩写:border-radius:X Y Z;  三个值    Y代表右上角和左下角 X为左上角 Z为右下角
+      border-radius:A B C D;  A左上角 B右上角  C右下角  D 左下角
+
+---css3 transform : 包括以下1 旋转 rotate(单位 deg 2D角度) transform-origin 旋转基点 围绕这个点旋转
+                       2 扭曲 skew：skewX/Y(deg) 扭曲X/Y轴 skew：（X,Y） 扭曲XY轴     
+                       3 缩放 scale：scaleX/Y（） 缩放X/Y轴  scale：（X,Y）；基数为1，大于1放大  小于1 缩小
+                       4 移动 translate ： translateX/Y();只移动X/Y轴 translate：100px，100px；
+             transform  写多个属性值  中间用空格隔开   不能分写
+
+----浏览器css前缀  提高兼容性  1  火狐 -moz-   2 -webkit-  谷歌 360 QQ  3  -O- 欧朋
+                               4  IE8以上的浏览器  -ms-
+
+
+----过度动画  transition：要加在初始的元素状态上  主要包含四个属性值：1 变换的属性名  
+                           2 变换延续的时间  3 变换的速率变化  4 变换延迟时间  
+                   多个"执行的属性"中间用逗号隔开
+
+linear线性匀速运动    ease逐渐变慢  ease-in加速  ease-out减速   ease-in-out先加速再减速    
+
+
+
+-----css3 animation  关键帧动画  
+
+    1  定义关键帧：  @keyframes 动画名称 {0%{css属性、属性值}  50%{}  100%{}}
+
+    2  调用：   animation-name：；
+    animation-duration：2s；动画播放持续时长  
+    animation-delay：；动画延时
+    animation-iteration-count：数值/infinite；动画循环次数/无限循环  
+    animation-timing-function：；变换的速率ease-in 等
+    animation-direction：；动画播放方向  只有两个值  normal 正常和 alternate 欧数次播放时反方向播放  奇数次播放时正常
+    animation-play-state：播放状态   running/paused
+    animation-fill-mode：both；  让动画停在最后一帧100% 上  需写在animation缩写的最后面
+
+缩写：  名字 加 播放时长 加 变换的速率 加 循环次数 加 动画延时 加 动画方向
+
+
+—————————————————————第9周————————————————————-----
+
+word-warp：   word-break：    解决中英文混合文本换行问题
+
+
+css3  -  背景图片大小  background-size : 
+      auto正常       cover：充满盒子      单位（X/Y）50%/100px      contain缩写到适合容器的尺寸
+
+css3  -  border-colors（仅火狐支持）多层颜色边框  -moz-border-top-colors：color color color
+
+css3  -  渐变： gradient：linear-gradient 线性渐变     radial-gradient径向渐变
+           background：-webkit-linear-gradient(top，red，blue)  从上到下 红变蓝
+            top为上下左右四个方向  也可以用角度   30deg
+        background：-webkit-linear-gradient(top，red80%，blue) 起始红色占80%
+        background：-webkit-radial-gradient(yellow，red80%，blue)从中间往外
+  重复条纹 渐变： background：-webkit-repeating-linear/radial-gradient（50deg，red 0px，red 5px，green 5px，green 10px）
+
+
+---------------移动端：
+      
+             使页面 适配不同 操作系统的各种型号的手机  即  不能用像素 定义宽高
+
+    移动端设计稿 尺寸：  1  640px  高度不限      2  750px   高度不限
+
+       移动端不做设置  默认双击可以缩放
+
+     viewport：视窗    如果页面没有经过设置，移动端浏览器会自动把页面缩放到适合移动端屏幕的尺寸
+
+<meta content="width=device-width, 宽度 等于 设备的宽度
+		initial-scale=1.0,  初始缩放为1.0
+		maximum-scale=1.0,  最大缩放一倍
+		user-scalable=0	    用户缩放  不允许
+		" name="viewport">    移动端  标签
+
+
+-----------百分比布局（弹性布局）： 单位用百分比 以父元素的宽度进行计算
+
+        移动端，盒子宽度设置100% 加边框或者padding 会撑破整个屏幕区域  
+     解决这个问题css3属性：box-sizing：content-box把边框和padding计算在整个盒子所占区域
+		       border-box盒子定义的width里  包含了边框和padding的宽度
+
+
+-------移动端弹性布局： flex
+              父元素设置display：flex；flex-direction：row行/column列
+            子元素设置  flex：1；  flex：2；  子元素宽度比为1:2    
+
+
+—————————————————————第10周————————————————————-----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

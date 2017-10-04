@@ -1,0 +1,164 @@
+常用node包     
+	axios    whatwg-fetch    ajax库
+	mockjs   模拟假数据
+
+
+
+React  核心库 :react-dom  操作dom的react库    react-router   路由库
+
+
+React 组件化开发，页面由组件组成   组件之间可以组合嵌套构成页面   
+	使用了虚拟DOM ， 优化性能
+
+
+	调用图片  <img src={require('路径')}>
+
+
+
+
+React  语法 ：
+
+	ES5    和     ES6 class    写法
+
+
+React   使用css 样式 ：
+	在JS文件中导包css   不是入口js文件      用className给元素加类     
+	import './index.css'
+
+
+	还可以用 style 属性方式   需要传一个 json 对象
+
+
+
+React  组件 属性 ：  props
+
+	props(属性)  可以外部传入参数来配置组件的形态 
+	组件内部通过  this.props.属性名     拿到属性，配合if判断  做相应的操作
+
+	默认属性  static defaultProps = {}；  设置父元素传过来的变量的默认值
+	属性类型检测  static PropTypes = {}；  设置 必填的 属性值
+
+	JSX  是 js语言的一种扩展，长得想HTML，但不是html
+	React 组件 可以用 JSX 描述 长什么样
+	JSX   在编译的时候，会变成相应的js对象描述
+	react-dom 负责把编译的js对象 变成DOM对象 并  渲染到页面中
+	
+
+JSX 语法 规范  ：
+
+	1、  一个组件 必须有一个 render 方法 ， 必须 返回 (return ();) 一个JSX元素
+	2、  一个组件里   必须有一个外层的 JSX 元素 把所有 内容包裹起来，返回多个并列的JSX元素是不合法的
+	3、  表达式插入 用 {}  包起来   可以放任意的   JS  代码  包括 变量 表达式运算等
+	4、  使用calssName添加 类  
+
+
+React  中 的  事件  ：
+
+	元素上加属性 onClick 等 添加事件效果   on* 的事件监听  只能用在普通的HTML标签上而不能用在组件的标签上  render  return  里的标签里    onClick = {this.clickfn.bind(this)}
+如果 函数需要传参数的话   onClick = {this.clickfn.bind(this,参数列表)}
+
+
+
+React  组件中的状态  :     state
+	用于组件 保存、控制、修改 自己的可变状态
+	外部无法访问  也不能修改  
+
+	组件的 初始 状态  在构造函数里  进行初始化  this.state = {};
+	使用this.setState({isShow : false});  方法来改变  状态值
+	this.state.isShow    可以用来取状态的值
+
+
+
+React   渲染列表   例如  留言板  ：
+
+	data.map(function(dData,index){//遍历});
+
+	在遍历生成的JSX
+
+
+React  获取  表单  内容  :
+
+
+	<input ref="username" type="text" />  才能获取到表单内容  
+	this.refs.username.value  可以获取到  input 标签里的 内容 
+
+	受控表单组件 ： 设定了 value的input组件  就是 受控组件   该组件为只读不能修改
+	如果加了value  还想  可以 修改值   须加上 onChange 事件
+	<input ref="username" type="text" onChange={this.fn.bind(this)} />
+	defaultValue  可以设置默认值
+
+
+React  组件 之间 的通信  连接 ：
+
+	父组件和子组件之间  this.props  来 传递数据
+	子组件和父组件之间  传一个带参数的  方法   
+
+
+
+
+React  props 高级用法 ：
+
+	props 可以接收 字符串 数字 方法  组件或JSX
+	可以将组件的一部分  从组件分离 减少耦合
+
+
+
+React  组件生命周期 ： 
+	一  初始化阶段    
+		即 构造方法
+
+	二 挂载阶段    
+	
+	1  componentWillMount(){}; 组件挂载开始之前，调用render方法之前
+	2  componentDidMount(){};  组件挂载完成之后，DOM元素已经插入页面中
+		一般在此方法中  通过ajax请求远程数据
+	
+
+	三 更新阶段 即 页面的交互  刷新界面根据新的数据
+	shouldComponentUpdate(nextProps,nextState){}
+	此方法控制组件是否需要重新渲染  返回false不重新渲染   返回true重新渲染
+
+	componentWillReciveProps(nextProps){}   
+	组件从父组件接收到新的props之前调用
+
+	componentDidUpdate(){}
+	组件重新渲染 并且 变更到真实的DOM以后调用
+
+
+
+	四   卸载阶段 ： 
+
+	componentWillUnmount(){}
+	组件对应的 DOM 元素 从页面中 删除 之前调用
+
+
+
+
+
+
+React  组件 路由 管理 ：  
+
+	根据不同的网址  展示不同界面  
+
+	路由逻辑 ： APP组件 所有页面都会加载的组件  放到APP里
+
+React Link 跳转传参  
+
+	<Route path=""detail/:id component={Detail} />
+	this.props.params.id     来接收 数据
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

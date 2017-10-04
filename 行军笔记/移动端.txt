@@ -1,0 +1,21 @@
+####    移动端库  zepto.js
+	语法类似JQuery  更小 更快      封装移动端触摸事件(touch)
+
+bootstrap  
+
+
+
+####   移动端  触摸事件
+
+touchstart手指放到屏幕    touchmove     touchend手指离开屏幕     touchcancel
+
+
+####   百度的  touch  库
+
+
+
+
+   rem布局   
+
+
+

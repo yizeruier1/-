@@ -1,0 +1,82 @@
+###  let 和  const
+	1、let 定义的变量在所在的代码块有效  即  局部变量
+	2、let 不允许在相同的作用域下  重复定义变量
+	3、const 定义一个常量，一旦声明常量的值不能改变,且必须在声明的时候就赋值  const PI = 3.1415926;
+
+
+###   变量的解构赋值
+	1、ES6 允许按照一定的模式，从数组和对象中提取值，对变量进行赋值，称为解构赋值
+		例： let [a,b,c] = [1,2,3];  console.log(a);console.log(b);   //输出 1  2
+	2、let data = {'name'='李白','job'='诗人'}     let{name,job}=data;  console.log(name)  // 李白
+		变量名必须与属性名一致，顺序可以不用一致，
+
+
+###   字符串的解构赋值  及  应用
+	1、let [a,b,c,d,e] = 'hello';    a 为 h , b 为 e  。。。
+	2、let x = 1;let y = 2;  [x,y] = [y,x];      // es6  交换两个变量的值
+
+
+###   获取模块中的方法
+	let {SourNode} = require('sour-map');
+
+
+###   拼接字符串 加 变量
+	1、let name = '李白';  let t = `<h1>${name}</h1>`       //  ```  数字1前面的反引号
+	2、反引号括起来在es6里  可以当做字符串来用，也可以嵌入变量   可以自动识别换行
+
+
+
+###   es6 函数的默认值
+	1、如果不传参数，函数会执行默认的值，
+		例： function add(x=0,y=0){console.log(x+y)}  //确保在不传参的情况下，add();也会有返回值
+
+	2、扩展运算符(...)  可以将数组转为逗号分隔的参数序列
+		例 ： console.log(...[1,2,3]);    //输出  1  2  3
+
+	3、在给函数传参数时，可以用2方法来展开数组，传参
+
+	4、使用方法2  可以合并数组    
+		例 ： let arr1 = [1,2,3];  let arr2 = [4,5,6];  let arr3 = [...arr1,...arr2];
+
+	5、字符串转为数组
+		例 ： let str = 'hello';  let arr = [...str];
+
+
+
+###   箭头函数
+	1、es6 允许使用箭头 => 定义函数   如果=>后面只有一条语句 可以不写{}
+		例 ： var add = (x,y) => {console.log(x+y)}     //有名函数
+		 	  () => {}   //匿名函数	}
+
+
+
+###   class  类   面向对象
+	1、对象实例化的时候  会自动调用 构造方法
+	2、 构造方法   constructor(){super();   // 继承父类的构造方法}
+
+	3、类的静态方法  类中定义的方法都可以通过实例化  用名字.方法名 来调用，方法中加上 static 关键词  在实例化类的时候  名字.方法名  调用不到静态方法，只能通过   类名.方法名   来调用
+		例 ： class Animal{
+				constructor(name){
+					this.name = name;
+					this.type = '111';
+				}
+				static showType(){
+					console.log(this.name);
+				}
+				showName(){
+					console.log(this.name);
+				}
+			  }       
+			  let mao = new Animal('猫');    // 调用mao.showType(); 会报错    mao.showName(); 输出 猫
+
+
+
+###   ES6  module  模块化
+	1、 import 导入   export 导出    导出单个方法 函数  要加 default
+	2、 webpack   做 import 和 export 对浏览器的兼容，模块打包
+	3、 webpack  是一个模块打包器，需要加载器loader   需要一个webpack.config.js(配置文件)
+	4、 导入模块时 解构JS   import {fn1,fn2} from './test';
+		{}中变量名必须与导出的模块接口名字相同，   可以使用as关键字 重命名一个名字
+		import {reduceaaaa as reduce} from './test';
+	5、 模块整体导出    import * as aaa from './test';
+	6、 导出变量  需要用{}  括起来 变量名

@@ -1,0 +1,22 @@
+HTML  CSS  JS    的框架  集合             Twitter  开发的
+
+ 		响应式  移动端  优先		IE8 及以下不支持
+
+
+
+	重点 ： 栅格系统（多列布局）  
+	row 必须包含在 container里    col必须包含在row里
+
+	列的尺寸 ：  手机xs  col-xs-列数/  平板  sm col-sm-列数/  电脑 md  col-md-列数
+		超大屏幕  lg  col-lg-列数    col-md-offset-列数  设置偏移=margin-left
+	辅助类  ： 左右浮动—— pull-left    pull-right  居中:center-block  text-center
+
+	dist —— 生产环境代码
+
+	ie if 语句  
+	<!--[if lt IE9]>      兼容IE9以下加载不同文件  gt  大于
+	  这里写相应的引入文件
+	<![Endif]>
+
+
+		CDN：加速网站访问速度

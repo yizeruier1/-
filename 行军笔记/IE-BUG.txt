@@ -1,0 +1,7 @@
+1、 IE8无法识别Media Query，需要CSShack！或者采用Respond.js。
+
+2、 IE 不支持CSS3 新属性，  可以使用  IE PIE  脚本解决.
+
+3、 IE 不支持 H5语义化标签(header/footer等)，
+
+4、 

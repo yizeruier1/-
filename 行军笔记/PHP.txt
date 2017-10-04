@@ -1,0 +1,97 @@
+<?php  ?>    标签 内  包含 php代码
+
+	php 输出语句:   echo "";
+
+解决乱码问题 ：  header("Content-Type:text/html;charset=utf-8");
+
+$sql = "insert into con(name,body,wTime) values('".$data['username']."','".$data['body']."','".$data['wTime']."')";
+
+
+index/index/index   命名空间(即文件夹)/控制器名(index.php)/方法(public函数)
+每个控制器对应view下一个文件夹  view下的文件/模板可以展示方法中的内容
+
+
+
+————————定义变量  ：
+	
+	$ + 变量名 = 变量值；      例 ：   $name = ruiwen;
+
+	thinkphp  截取字符串过长 ： {$a.body|strip_tags|substr=0,120} 去掉html标签strip
+	
+	图片路径： index.php/qiantai/index/index
+
+
+————————thinkphp页面跳转  ：
+
+	return $this->success('提示文字','要跳转的页面路径',"跳转模式","跳转时间/s");
+	return $this->error('提示文字','要跳转的页面路径');  路径不写，默认返回原网页
+
+————————thinkphp把变量传到页面模板  ：
+
+	$this->assign('uname',$uname);  ("变量名字",变量值)
+
+
+form 的 action="" 即模板文件跟方法名一样  可以互传数据  否则需加路径
+
+
+
+————————thinkphp  Session操作  ：
+	设置赋值：Session::set('uname',$data['uname']);
+	判断是否存在：Session::has('uname');
+	获取值：Session::get('uname');
+	清除 ： Session::clear();   清空跟该页面相关的所有缓存
+
+————————thinkphp  页面中跳转到PHP类：
+
+	<a href="{:url('index/lgout')}" class="style">退出登录</a>  
+
+————————thinkphp 调用公共文件  ：
+
+	{include file="common/header" /}  header.html
+
+
+————————————————————php 表单  接收 文件数据  图片等
+
+	表单 加上  enctype="multipart/form-data"
+
+
+——————连接数据库并进入dbname数据库 ： 
+	$content = mysqli_connect(host,user,password,port,dbname);
+	host:数据库地址   user:登录用的用户名  password:密码  port:端口号
+
+	$sql = "select * from student";
+	$sqldata = $content->query($sql);       //   query 执行sql语句
+
+
+——————引入配置的php文件 ：
+	
+	include 'config.php';      必须是相对路径
+
+
+————————————把时间戳改变为  标准时间  ：
+
+	date_default_timezone_set('PRC');        //时间定位到东八区
+	date('Y-m-d H:i:s',$a['wTime']);         //时间日期显示格式，时间戳
+
+thinkphp 写法  ：  {$a.wTime|date="Y-m-d H:i:s",###}
+
+
+
+
+——————————————————php—Model—————————————————————
+
+	用来取一个数据表中的所有信息，模型输出
+
+	新建一个model文件夹    model/Yonghu.php
+	Yonghu.php    应该对应数据库Yonghu表    
+namespace app\index\model;    命名空间  app\模块名称\文件名路径
+use think\Model;     导包  引入文件
+
+______引入调用model  ： use app\index\model\Yonghu as YonghuModel;
+		取出数据 ： YonghuModel::get||paginate(n);  取出n条数据显示一页
+
+
+分页输出是基于bootstrap    所以必须先引用文件   
+
+
+

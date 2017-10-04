@@ -1,0 +1,85 @@
+
+			IE8等ie浏览器不支持HTML5
+
+	新增标签 
+  
+	语义化标签 <header></header>   <footer></footer> <nav> <section> <aside> 	<article>   
+   
+	表单扩展  input type="emall" 等
+
+	增强本地存储、会话存储
+
+	移动端设备：可以获取电池  陀螺仪  指南针  地理位置
+
+——————————————————————增强多媒体———————————————————
+		歌词文件  ：  xxx.lrc
+
+
+	创建音频 ：  html创建  ——  <audio controls src="1.mp3" />
+		audio 的属性  controls  控制条
+		audio 的属性  autoplay  自动播放  (iPhone 不支持自动播放)
+		audio 的属性  loop  循环播放
+		audio 的属性  preload  预加载  优化
+
+
+	创建音频 ：   <audio controls>  
+			<source src="music.ogg" type="audio/ogg">  						<source src="1.mp3" type="audio/mpeg">  
+		      </audio>
+	
+	JS创建音频 ： var music = new Audio(); music.src = "";  music.play();
+		或者 ： var music = new Audio("1.mp3"); music.play();
+
+	JS 属性 ：  .volume  音量控制(0-1)  /   .duration  音乐时长---值为秒数
+		    .currentTime  当前播放时间  
+
+		    .paused  判断是否暂停  返回一个布尔值  正在播放返回false
+
+	JS方法 ： 
+		    .play()  播放音乐       .pause()暂停
+
+	JS事件 ：   .timeupdata();   音乐一直播放时触发该事件
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

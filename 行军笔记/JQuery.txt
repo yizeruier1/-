@@ -1,0 +1,129 @@
+       官网 ———— JQuery.com  
+
+$(document).ready(function{    //相当于window.onload    但是比onload牛逼
+	
+});
+	二者区别 ： window.onload必须等待页面中所有元素、图片加载完成才能执行  会比较卡
+	后者是 网页中所有DOM结构加载完成即可执行、不必等待图片加载。
+	$(document).ready(function(){}) 可以缩写为  $(function(){})
+
+
+	核心函数是 JQuery(); = $();
+
+	通过核心函数$();得到的元素 对象 返回值叫JQuery对象，不能直接使用原生的JS方法
+	通过原生JS获取的元素 对象 返回值 叫DOM对象
+	JQuery对象转化为DOM对象  ： JQuery对象类似于数组对象，可以使用索引获取DOM对象。   
+  
+
+	可以使用css选择器，封装DOM操作，简化节点操作，封装常用事件，浏览器全部兼容，ajax
+	链式操作，隐式迭代
+	
+
+	JQuery  获取元素   $("#id")  通过ID获取    $(".class") 通过类  $("p") 通过标签
+			$(".list li") 通过层级获取  $(".list li,.list2 li") 分组
+	$(".now~p") now类之后的所有p标签 不包括now  $("li:even")获取偶数li
+
+	$(":eq()") 特定索引的元素 从0开始
+
+
+——————————————————————JQuery动画方法————————————————
+
+	show(speed) 显示     hide(speed)隐藏     slideUp(speed)收起    slideDown()展开
+
+	toggle(speed)显示变隐藏，隐藏变显示
+
+	slideToggle(speed)收起变展开，展开变收起
+
+
+—————————————————————DOM操作————————————————————
+
+	$(".box").next(".list"); 获取.box的后面兄弟元素类名为.list的元素
+	$(a).parent();  获取a的父元素
+	$(a).siblings() 获取a的兄弟节点
+	$(a).find(b)  找到a下的b元素
+	$(a).hover(function(){},function(){})   鼠标滑过事件
+
+
+JQuery  DOM操作 ——————————————————
+
+	JQuery动画 ：  .animate({},2000,function(){});    --自定义动画callback
+
+
+
+———————————————————————AJAX—————————————————————
+		AJAX  :  Asynchronous  异步  javascript  and   xml
+	核心是  XMLHttpRequest对象   用于向服务器发送请求
+
+	get方式传参数 ： 数据会在url上显示，安全性低，有长度限制，
+	post方式传参数， ： 不会在url中显示   安全性高	
+
+	Ajax=new XMLHttpRequest();   定义ajax 对象
+	连接服务器  ：  ajax.open("GET",url,true);  true异步：同时做多件事   false同步
+	发送请求  ：  ajax.send();
+	等待服务器的相应  ：  readyState  记录响应  0-没有初始化  1-正在发送请求
+	2-send()完成，有收到全部内容，  3-正在解析内容  4-解析内容完成，可以在JS中调用
+	接通以后，进行通话  ： status请求的结果状态       200-成功   404-找不到文件
+
+				无刷新 数据  读取    缓存问题 IE；
+	第一次访问后 数据会存储在缓存文件里，以后访问会从缓存文件里调用数据，导致原来获取
+	的js/css等文件更新时  页面数据不会更新。  用传参数方式解决  url后加?a=xxx   
+	a  为  一个每次都变化的变量  比如  时间戳 传多个参数  ?a=1&b=xxx&aaa=222  get方式
+
+	
+	wamp server   window apache mysql  php          php开发者环境
+
+	使用ajax  必须放在服务器端
+
+	<script src="js/ajax.js"><script>   ajax(url,succfn,fallfn);获取目标文件
+		ajax  返回数据  为string值     
+
+	eval();函数  ： 可以计算某个字符串，并执行其中的js代码
+
+	var str = "function(){alert(1)}";   eval("("+str+")()");   匿名函数自调用
+
+	eval()  解析json数据时  大括号{}会被认为是语句块来处理，会报错
+	所以  转换json字符串时   eval("(" + jsonStr + ")");
+
+	JSON.parse(str);  也可以把json字符串转化为json对象   比较安全
+
+
+——————————————————JQuery  AJAX——————————————————————
+
+		$.ajax({type:"GET",url:"test.js",dataType:"json",success:fn,});
+	$.getJSON(url,successFn);//取json数据get方式
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

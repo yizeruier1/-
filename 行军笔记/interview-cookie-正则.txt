@@ -1,0 +1,103 @@
+隐藏一个元素7/12：   1  display：none；不占内存；  2  盒子透明transparent；
+3  透明度opacity：0；   4  定位：       5  设置宽高为0；  6 visibility：hidden；占内存
+   7  用另外一个盒子把它盖住
+
+
+在body里面设置文字字号大小为0，可消除标签之间的默认间距。
+
+
+justify-content:center;//子元素水平居中
+	// align-items:center;//子元素垂直居中
+	// display:-webkit-flex;         /CSS3  不固定宽高  水平垂直居中
+
+
+
+
+设置 文字 图片 等  不能被选中
+document.onselectstart = new Function(){'event.returnValue = false;'}
+
+
+
+除了IE浏览器，其他标准浏览器的页面默认字体字号大小为16px；
+
+
+
+JS 匿名函数 自执行
+	(function(){alert(111);})()   ———— 输出111
+
+函数回调  
+	function(形参1,形参2,回调函数名){}
+
+move(box,500,callback);  //当box移动到500   完成动画时  执行callback  函数
+
+
+  
+<a href="dele?id={$a.id}" onclick="return del()">删除</a>
+	返回true执行a标签的点击事件   否则不执行   即点击无效果
+
+
+
+
+————————————————————正则表达式————————————————————
+		regular  expression
+	使用字符串描述或匹配一系列某些规则的字符串
+		\bis\b  匹配 单词 is
+  \b —— 词边界     \d ——表示数字    {}表示量词   ^表示开头    $表示结束  []表示或
+  .  表示任意字符      \  代表转义     +  代表至少有一个    .+  至少存在一个字符
+   \s  表示空白符 即空格         g  表示全局搜索   () 表示分组  *  表示出现0次或多次
+\n  回车
+
+日期格式 ：  ^\d{4}[/-]\d{2}[/-]\d{2}$  2010/01/02    2010-01-02
+
+	JS 中使用正则表达式  ：   reg对象   var reg = /正则表达式/;  var reg = new RegExp("正则表达式");
+	配合字符串 相关方法   str.replace(reg,"最终值");
+	去空格  正则表达式  ：  var reg = /(^\s*)|(\s*$)/g;
+
+		reg对象上的方法  reg.exec();  可以/g  没有匹配返回null  匹配成功返回数组
+		reg.test()  避免使用全局g   返回true和false
+
+
+—————————————————————COOKIE——————————————————————
+
+	数量和大小有限制   ：
+			Firefox大概能存50个cookie
+			chrome 没有限制  
+			每个cookie所存放的数据不能超过4k  超过则返回空字符串
+	过期时间  ：  如果不设置  关闭浏览器自动清除   设置以后  超过时长自动清除
+
+	清除cookie  ：  浏览器工具，代码设置，用过期时间
+		cookie一般只有火狐可以直接打开页面进行访问，其他浏览器需要在服务器环境使用
+
+	JS设置cookie  ：  document.cookie = "user=jack; expires=时间";  时间为过期时间
+	var date = new Date(); date.setDate(date.getDate()+30);设置30天以后过期(有问题)
+	date.toGMTString();  把date转化为世界时间  字符串
+
+
+	cookie可以制作网页换肤    换肤必须使用link方式
+			
+获取cookie值的函数   ：   
+		function getCookie(name){
+			var arr = document.cookie.split("; ");
+			for(var i = 0; i < arr.length; i++){
+				var arr2 = arr[i].split("=");
+				if(arr2[0] == name){
+					return arr2[1];
+				}		
+			}
+			return "";
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

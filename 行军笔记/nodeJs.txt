@@ -1,0 +1,140 @@
+NodeJs 是一个基于 chrome V8 引擎的javascript 运行环境
+
+将V8引擎 移植出来   可以将nodeJs安装到系统里
+
+    		IO非阻塞      事件驱动
+
+	特点：系统级接口、文件读写、可以实现一个服务器、前端生态
+
+1、前端可以使用js做开发后端
+2、js操作数据库
+3、js编写前端工具，比如：自动刷新  压缩代码  重命名文件
+4、可以编写客户端软件，比如使用：node-webkit
+
+	后端生态 ：
+1、express框架
+2、mongoDB数据库
+
+
+			——————————语法  ：
+	var fs = require('fs');  导包    
+
+
+
+NodeJs  模块化  和  包管理：
+	传统的开发模式，有大量js文件引入  会引起 变量冲突、依赖关系（JQ-js）、命名空间
+等问题。
+
+
+	NodeJs规范-CommonJS规范 :
+	一个文件就是一个模块，每个模块都有单独的作用域，每个模块里面的变量和方法都是私有的
+	导出模块需要使用 exports 命令   将变量和方法提供给其他模块使用，
+
+
+	NodeJs中 模块 分类 ：
+核心模块 ： 例如 http模块
+文件模块：  例如 fs
+第三方模块：  开发者开发的模块
+	模块使用 ：
+导入模块  require（模块名）/  require（路径）
+
+	npm ——————mode模块工具   包管理 工具  https://www.npmjs.com/
+	常用命令：  npm install 包名字
+		npm install 包名字 -g  全局安装 
+		npm install 包名字 --save-dev  项目内安装
+		npm list  列举 已安装的包
+	moment.js包  可以处理日期
+下载包从阿里镜像：  npm install moment --save-dev --registry=http://registry.npm.taobao.org
+
+
+	gulp  打包 压缩 移动文件   npm gulp 安装
+	
+	npm install gulp --save-dev 
+	安装完成后  执行gulp命令 查看是否安装完成
+	如果没有安装成功,提示：command no found  则需npm install gulp -g
+	安装完成后 需要编写gulpfile.js   定义各种任务 
+	gulp将按照gulpfile.js里面的规则，执行操作
+编写 gulp ：
+	
+	var gulp = require('gulp');
+	gulp.task('show',function(){console.log('success');}
+	gulp.watch(['*.html','css/*.css']).on('change'););
+	
+	
+
+
+
+	package.json    文件  说明：
+
+	说明包所需要的依赖。开原协议等。
+	使用者只需要运行  npm  install,就可以安装  项目所需要的模块
+	如何生成项目所需要的package.json文件
+		npm  init    填写相应的信息
+
+
+	package.json   文件介绍 ：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+———————————————————————VUE—————————————————————
+	
+	使用vue先引入文件   <script src="https://unpkg.com/vue/dist/vue.js"></>
+
+	v-text:"";  只能渲染文本值  如果遇到代码   不能执行 直接输出
+	v-html:"";  涉及到代码   执行后  再输出
+	v-bing:    给元素绑定一个东西   v-bind:class=""   绑定一个类
+	v-on:click="cc(zf)"  给元素绑定事件  
+	@keyup.enter="onEnter"  点击回车  触发 onEnter事件  事件名不能加()
+	watch{}    监听  一个元素的变化
+
+	webpack  是  vue  项目的一个打包工具
+
+	组件的生命周期 ：    创建->存在->销毁
+	
+
+
+
+、、、、、、、、、、、运行 进入项目目录下  cnpm  run  dev
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+npm install -g cnpm
+cnpm install --global vue-cli
+
+
+
+
+
+
+
