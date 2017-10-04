@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>旋转木马</title>
+	<style>
+		*{
+		     margin:0;
+		     padding:0;
+		     border:none;
+		     }
+		      .all{
+		          width: 1200px;
+		          height: 500px;
+		          margin: 150px auto;
+		          position: relative;
+		          border:1px solid red;
+		      }
+		      ul li{
+		          list-style: none;
+		          height:300px;
+		          position: absolute;
+		          top:0;
+		          transition:all 0.3s linear;
+		      }
+		      ul li img{
+					width:100%;height:100%;
+		      }
+		      .bottom{
+		          opacity: 0;
+		          position:relative;
+		          top:30%;
+		          z-index: 99;
+		      }
+		      .left,.right{
+		          position: absolute;
+		          display:block;
+		          width: 50px;
+		          height: 50px;
+		          top: 50%;
+		          z-index: 99;
+		          cursor: pointer;
+		      }
+		      .left{
+		          left: 0px;
+		          background-color:orange;
+		      }
+		      .right{
+		          right:0px;
+		          background-color:orange;
+		      }
+	</style>
+</head>
+<body>
+	<div class="all" id="all">
+		  <ul id="oul">
+		      <li><img src="images/1.png" alt=""></li>
+		      <li><img src="images/2.png" alt=""></li>
+		      <li><img src="images/3.png" alt=""></li>
+		      <li><img src="images/4.png" alt=""></li>
+		      <li><img src="images/5.png" alt=""></li>
+		  </ul>
+		  <div class="bottom" id="bottom">
+		      <span class="left">asdasd</span>
+		      <span class="right">qweqwe</span>
+		  </div>
+	</div>
+</body>
+
+<script>
+	window.onload = function () {
+      //获取标签
+      var all = document.getElementById("all");
+      var oul = document.getElementById("oul");
+      var bottom = document.getElementById("bottom");
+      var lis = oul.getElementsByTagName('li');
+      var navs = bottom.getElementsByTagName('span');
+      //触碰大盒子显示两个箭头
+      all.onmouseover = function () {
+          bottom.style.opacity = 1;
+      }
+      all.onmouseout = function () {
+          bottom.style.opacity = 0;
+      }
+      //设置各个图片的对应位置
+      var json = [
+          {   //  1
+              width:400,
+              top:20,
+              left:50,
+              opacity:0.2,
+              z:2
+          },
+          {  // 2
+              width:600,
+              top:70,
+              left:0,
+              opacity:0.8,
+              z:3
+          },
+          {   // 3
+              width:800,
+              top:100,
+              left:200,
+              opacity:1,
+              z:4
+          },
+          {  // 4
+              width:600,
+              top:70,
+              left:600,
+              opacity:0.8,
+              z:3
+          },
+          {   //5
+              width:400,
+              top:20,
+              left:750,
+              opacity:0.2,
+              z:2
+          }
+      ]
+      //抽取函数设置各个图片的属性
+      var flag = true;
+      function change(){
+          //遍历每个li取出每一个数据
+          for(var i=0;i<lis.length;i++){
+              var item = json[i];
+              lis[i].style.width = item.width + 'px';
+              lis[i].style.left = item.left + 'px';
+              lis[i].style.top = item.top + 'px';
+              lis[i].style.opacity = item.opacity;
+              lis[i].style.zIndex = item.z;
+              flag = true;
+          }
+      }
+      change();
+//点击span设置对应的动画变化
+      for(var i = 0;i<navs.length;i++){
+          var mySpan = navs[i];
+          mySpan.onclick = function () {
+              if(flag == true){
+                  if(this.className == "left"){
+                      json.push(json.shift());
+                      flag = false;
+                      change();
+                  }else if(this.className == "right"){
+                      json.unshift(json.pop());
+                      flag = false;
+                      change();
+                  }
+              }
+          }
+      }
+  }
+</script>
+
+</html>

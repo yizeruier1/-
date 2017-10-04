@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片裁剪</title>
+	<style>
+		body,img,p{margin:0;padding:0;background-color:#333;}
+		.box{width:560px;height:300px;margin-top:20px;margin-left:200px;position:relative;}
+		.box2{margin-top:20px;}
+		.box2 img{position:absolute;top:0;left:0;clip:rect(0,150px,150px,0);}
+		.img1{display:block;width:100%;height:100%;position:absolute;top:0;left:0;opacity:0.2;}
+		.img2{display:block;width:100%;height:100%;position:absolute;top:0;left:0;
+			clip:rect(0,150px,150px,0);}
+		.btnbox{width:148px;height:148px;position:absolute;left:0;top:0;border:1px solid #fff;cursor:move;}
+		.btnbox p{width:8px;height:8px;background-color:#fff;position:absolute;left:-4px;top:-4px;cursor:nw-resize;}
+		.btnbox p:nth-child(2){left:50%;top:-4px;margin-left:-4px;cursor:n-resize;}
+		.btnbox p:nth-child(3){left:100%;top:-4px;margin-left:-4px;cursor:ne-resize;}
+		.btnbox p:nth-child(4){left:-4px;top:50%;margin-top:-4px;cursor:e-resize;}
+		.btnbox p:nth-child(5){left:100%;top:50%;margin-top:-4px;margin-left:-4px;cursor:e-resize;}
+		.btnbox p:nth-child(6){left:-4px;top:100%;margin-top:-4px;cursor:sw-resize;}
+		.btnbox p:nth-child(7){left:100%;top:100%;margin-top:-4px;margin-left:-4px;cursor:nw-resize;}
+		.btnbox p:nth-child(8){left:50%;top:100%;margin-top:-4px;margin-left:-4px;cursor:n-resize;}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<img src="images/1.jpg" class="img1" id="img1" />
+		<img src="images/1.jpg" class="img2" id="img2" />
+		<div class="btnbox" id="box">
+			<p></p>
+			<p></p>
+			<p></p>
+			<p></p>
+			<p id="right"></p>
+			<p></p>
+			<p></p>
+			<p></p>
+		</div>
+	</div>
+
+	<div class="box box2">
+		<img src="images/1.jpg" id="img3" />
+	</div>
+</body>
+<script>
+	var box = document.getElementById('box');
+	var img1 = document.getElementById('img2');
+	document.onselectstart = new Function('event.returnValue = false');
+	var img2 = document.getElementById('img3');
+	var rightBtn = document.getElementById('right');
+
+	rightBtn.onmousedown = function(e){
+		e.stopPropagation();
+		var wid = box.offsetWidth;
+		var hei = box.offsetHeight;
+		var lef = box.offsetLeft;
+		var topp = box.offsetTop;
+		document.onmousemove = function(e){
+			box.style.width = e.clientX - lef - 200 + 'px';
+			img1.style.clip = "rect("+topp+"px,"+(e.clientX - 200)+"px,"+(topp+hei)+"px,"+lef+"px)";
+			img2.style.clip = "rect("+topp+"px,"+(e.clientX - 200)+"px,"+(topp+hei)+"px,"+lef+"px)";
+		}
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		}
+	}
+
+	box.onmousedown = function(e){
+		var e = e || event;
+		var left = this.offsetLeft;
+		var top = this.offsetTop;
+		var l = e.clientX - 200 - left;
+		var t = e.clientY - 20 - top;
+
+		document.onmousemove = function(e){
+			
+			var ll = e.clientX - 200 - l;
+			var tt = e.clientY - 20 - t;
+			if(ll < 0){
+				ll = 0;
+			}else if(tt < 0){
+				tt = 0;
+			}else if(ll > 410){
+				ll = 410;
+			}else if(tt > 150){
+				tt = 150;
+			}else if(tt > 150 && ll > 410){
+				tt = 150;
+				ll = 410;
+			}
+
+			box.style.left = ll + 'px';
+			box.style.top = tt + 'px';
+
+			img1.style.clip = "rect("+tt+"px,"+(box.offsetWidth+ll)+"px,"+(box.offsetHeight+tt)+"px,"+ll+"px)";
+			img2.style.clip = "rect("+tt+"px,"+(box.offsetWidth+ll)+"px,"+(box.offsetHeight+tt)+"px,"+ll+"px)";
+			img2.style.left = 0;
+			img2.style.top = 0;
+		}
+
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		}
+	}
+</script>
+</html>
